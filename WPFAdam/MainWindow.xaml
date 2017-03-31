@@ -5,9 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFAdam"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="255,157,0,0" VerticalAlignment="Top" Width="75" Click="btn_Click"/>
+        Title="MainWindow" Height="747.5" Width="993" ResizeMode="NoResize">
+    <Grid Margin="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
 
+        <Image x:Name="image" Margin="10,10,0,0" Source="grondplan.jpg" Grid.Column="1"/>
+        <StackPanel Margin="5">
+            <Button x:Name="btnVentilator" Content="Ventilator" Margin="0,0,0,5" FontSize="20" Click="btnVentilator_Click"/>
+            <Button x:Name="BtnLed1" Content="Led1" Margin="0,0,0,5" FontSize="20" Click="BtnLed1_Click"/>
+            <Button x:Name="btnLed2" Content="Led2" Margin="0,0,0,5" FontSize="20" Click="btnLed2_Click"/>
+            <Button x:Name="btnLed3" Content="Led3" Margin="0,0,0,5" FontSize="20" Click="btnLed3_Click"/>
+            <Button x:Name="btnLed4" Content="Led4" Margin="0,0,0,5" FontSize="20" Click="btnLed4_Click"/>
+            <Button x:Name="BtnAlarmTest" Content="AlarmTest" Margin="0,0,0,5" FontSize="20" Click="BtnAlarmTest_Click"/>
+        </StackPanel>
+        <Ellipse Name="EllLed1" Fill="White" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="118,476,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed1_MouseUp"/>
+        <Ellipse x:Name="EllLed2" Fill="White" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="336,608,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed2_MouseUp"/>
+        <Ellipse x:Name="EllLed3" Fill="White" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="530,390,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed3_MouseUp"/>
+        <Ellipse x:Name="EllLed4" Fill="White" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="80,132,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed4_MouseUp"/>
+        <Image x:Name="imgVentilator" Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="224,132,0,0" VerticalAlignment="Top" Width="100" Source="fan.png" RenderTransformOrigin="0.5,0.5" MouseUp="btnVentilator_Click">
+            <Image.RenderTransform>
+                <TransformGroup x:Name="RotateTransform">
+                    <RotateTransform Angle="0"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
     </Grid>
 </Window>

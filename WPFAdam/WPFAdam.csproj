@@ -71,6 +71,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="email.cs" />
     <Compile Include="InputListener.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -112,6 +113,8 @@
     <Content Include="Advantech.Graph.dll" />
     <Content Include="Advantech.IOUserCtl.dll" />
     <Content Include="Advantech.Protocol.dll" />
+    <Resource Include="fan.png" />
+    <Resource Include="grondplan.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

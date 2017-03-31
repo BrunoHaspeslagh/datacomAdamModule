@@ -16,3 +16,6 @@ C:\Users\tost\Desktop\projecten\adam_module\WPFAdam\WPFAdam\obj\Debug\WPFAdam.ex
 C:\Users\tost\Desktop\projecten\adam_module\WPFAdam\WPFAdam\obj\Debug\WPFAdam.pdb
 C:\Users\tost\Desktop\projecten\adam_module\WPFAdam\WPFAdam\bin\Debug\Advantech.Protocol.dll
 C:\Users\tost\Desktop\projecten\adam_module\WPFAdam\WPFAdam\obj\Debug\WPFAdam.csprojResolveAssemblyReference.cache
+C:\Users\tost\Desktop\projecten\adam_module\git\datacomAdamModule\WPFAdam\bin\Debug\WPFAdam.exe.config
+C:\Users\tost\Desktop\projecten\adam_module\git\datacomAdamModule\WPFAdam\obj\Debug\WPFAdam.exe
+C:\Users\tost\Desktop\projecten\adam_module\git\datacomAdamModule\WPFAdam\obj\Debug\WPFAdam.pdb
