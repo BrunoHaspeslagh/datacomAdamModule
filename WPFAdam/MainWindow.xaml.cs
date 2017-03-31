@@ -27,6 +27,8 @@ namespace WPFAdam
         public AdamSocket Socket { get; set; }
         public Modbus modbus { get; set; }
         public bool bl { get; set; } = true;
+        public bool fan { get; set; } = false;
+        public bool AlarmOn { get; set; } = false;
         public InputListener inputs { get; set; }
         public MainWindow()
         {
@@ -37,6 +39,13 @@ namespace WPFAdam
             inputs = new InputListener(modbus);
             inputs.btnPressed += Inputs_btnPressed;
             inputs.redSwitched += Inputs_redSwitched;
+            this.Closing += MainWindow_Closing;
+        }
+
+        private void MainWindow_Closing(object sender, CancelEventArgs e)
+        {
+            while (!modbus.ForceSingleCoil(17, false));
+            Socket.Disconnect();
         }
 
         private void Inputs_redSwitched(bool isOn)
@@ -47,7 +56,7 @@ namespace WPFAdam
 
             }
             else Console.WriteLine("OFF");
-
+            AlarmOn = isOn;
         }
 
         private void Inputs_btnPressed(int nr)
@@ -55,6 +64,9 @@ namespace WPFAdam
             if(nr == 1)
             {
                 Console.WriteLine("Green!!");
+                fan = !fan;
+
+                while(!modbus.ForceSingleCoil(17, fan));
             }
             if(nr == 2)
             {
@@ -65,10 +77,6 @@ namespace WPFAdam
        
         private void btn_Click(object sender, RoutedEventArgs e)
         {
-            bool[] inputs = new bool[4];
-            bool b = modbus.ReadCoilStatus(1, 4, out inputs );
-
-            Console.WriteLine(inputs[2]);
         }
     }
 }
