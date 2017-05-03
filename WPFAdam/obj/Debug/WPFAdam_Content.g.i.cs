@@ -15,5 +15,6 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("advantech.graph.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("advantech.iouserctl.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("advantech.protocol.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("net.pkcs11.dll")]
 
 

@@ -47,6 +47,14 @@
       <HintPath>..\packages\Mail.dll.3.0.17023.1443\lib\Net45\Mail.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Net.Pkcs11, Version=1.1.5913.21612, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Net.Pkcs11.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -67,6 +75,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="models\Tijdslot.cs" />
+    <Compile Include="models\User.cs" />
+    <Compile Include="ReadData.cs" />
+    <Compile Include="Sign.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -75,8 +87,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="eid.cs" />
     <Compile Include="email.cs" />
     <Compile Include="InputListener.cs" />
+    <Compile Include="Integrity.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -118,6 +132,7 @@
     <Content Include="Advantech.Graph.dll" />
     <Content Include="Advantech.IOUserCtl.dll" />
     <Content Include="Advantech.Protocol.dll" />
+    <Content Include="Net.Pkcs11.dll" />
     <Resource Include="fan.png" />
     <Resource Include="grondplan.jpg" />
   </ItemGroup>

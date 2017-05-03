@@ -33,13 +33,17 @@ namespace WPFAdam
         {
             wrkr.RunWorkerAsync();
             string res = (string)e.Result;
-            mailReceived(res);
+            if( res != null)
+            {
+                mailReceived(res);
+            }
+            
         }
 
         private void Wrkr_DoWork(object sender, DoWorkEventArgs e)
         {
             string res =  ontvang();
-            if(res != "")
+            if(res != "" && res != null)
             {
                 e.Result = res;
             }

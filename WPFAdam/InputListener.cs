@@ -12,6 +12,7 @@ namespace WPFAdam
     public class InputListener
     {
         private BackgroundWorker wrkr = new BackgroundWorker();
+
         public int startpoint { get; set; } = 2;
         public int amount { get; set; } = 6;
         public Modbus modbus { get; set; }
@@ -44,39 +45,50 @@ namespace WPFAdam
             {
                 redSwitched(res[2] == 1);
             }
+
             wrkr.RunWorkerAsync();
         }
 
         private void Wrkr_DoWork(object sender, DoWorkEventArgs e)
         {
-            bool[] prevs = new bool[amount];
-            if (modbus.ReadCoilStatus(startpoint, amount, out prevs))
+            try
             {
+                bool[] prevs = new bool[amount];
+                while (!modbus.ReadCoilStatus(startpoint, amount, out prevs))
+                {
+                    Console.WriteLine("vast1");
+                }
+
+
                 bool[] curs = new bool[amount];
                 bool looping = true;
 
                 while (looping)
                 {
-                    if(modbus.ReadCoilStatus(startpoint, amount, out curs))
-                    {
-                        for (int i = 0; i < amount; i++)
-                        {
-                            if (prevs[i] != curs[i])
-                            {
-                                int p;
-                                int c;
-                                if (prevs[i]) p = 1; else p = 0;
-                                if (curs[i]) c = 1; else c = 0;
-                                e.Result = new int[3] { i, p, c };
-                                looping = false;
-                                i = amount;
-                            }
-                        }
-                    }
+                    Console.WriteLine("looping");
 
-                    
+                    while (!modbus.ReadCoilStatus(startpoint, amount, out curs)) ;
+                    for (int i = 0; i < amount; i++)
+                    {
+                        if (prevs[i] != curs[i])
+                        {
+                            int p;
+                            int c;
+                            if (prevs[i]) p = 1; else p = 0;
+                            if (curs[i]) c = 1; else c = 0;
+                            e.Result = new int[3] { i, p, c };
+                            looping = false;
+                            i = amount;
+                        }
+
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            
         }
         
 
