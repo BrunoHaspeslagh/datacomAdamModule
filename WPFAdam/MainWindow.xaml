@@ -21,10 +21,10 @@
             <Button x:Name="btnLed4" Content="Led4" Margin="0,0,0,5" FontSize="20" Click="btnLed4_Click"/>
             <Button x:Name="BtnAlarmTest" Content="AlarmTest" Margin="0,0,0,5" FontSize="20" Click="BtnAlarmTest_Click"/>
         </StackPanel>
-        <Ellipse Name="EllLed1" Fill="White" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="118,476,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed1_MouseUp"/>
-        <Ellipse x:Name="EllLed2" Fill="White" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="336,608,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed2_MouseUp"/>
-        <Ellipse x:Name="EllLed3" Fill="White" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="530,390,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed3_MouseUp"/>
-        <Ellipse x:Name="EllLed4" Fill="White" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="80,132,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed4_MouseUp"/>
+        <Ellipse Name="EllLed1" Fill="#FF060606" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="118,476,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed1_MouseUp"/>
+        <Ellipse x:Name="EllLed2" Fill="Black" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="336,608,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed2_MouseUp"/>
+        <Ellipse x:Name="EllLed3" Fill="Black" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="530,390,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed3_MouseUp"/>
+        <Ellipse x:Name="EllLed4" Fill="Black" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="80,132,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed4_MouseUp"/>
         <Image x:Name="imgVentilator" Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="224,132,0,0" VerticalAlignment="Top" Width="100" Source="fan.png" RenderTransformOrigin="0.5,0.5" MouseUp="btnVentilator_Click">
             <Image.RenderTransform>
                 <TransformGroup x:Name="RotateTransform">

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WPFAdam
@@ -49,28 +50,35 @@ namespace WPFAdam
         private void Wrkr_DoWork(object sender, DoWorkEventArgs e)
         {
             bool[] prevs = new bool[amount];
-            while (!modbus.ReadCoilStatus(startpoint, amount, out prevs)) { }
-            bool[] curs = new bool[amount];
-            bool looping = true;
-            while(looping)
+            if (modbus.ReadCoilStatus(startpoint, amount, out prevs))
             {
-                while (!modbus.ReadCoilStatus(startpoint, amount, out curs)) { }
+                bool[] curs = new bool[amount];
+                bool looping = true;
 
-                for(int i = 0; i< amount; i++)
+                while (looping)
                 {
-                    if(prevs[i] != curs[i])
+                    if(modbus.ReadCoilStatus(startpoint, amount, out curs))
                     {
-                        int p;
-                        int c;
-                        if (prevs[i]) p = 1; else p = 0;
-                        if (curs[i]) c = 1; else c = 0;
-                        e.Result = new int[3] {i,p, c };
-                        looping = false;
+                        for (int i = 0; i < amount; i++)
+                        {
+                            if (prevs[i] != curs[i])
+                            {
+                                int p;
+                                int c;
+                                if (prevs[i]) p = 1; else p = 0;
+                                if (curs[i]) c = 1; else c = 0;
+                                e.Result = new int[3] { i, p, c };
+                                looping = false;
+                                i = amount;
+                            }
+                        }
                     }
-                }
 
+                    
+                }
             }
         }
+        
 
         public delegate void btnPressedEventHandler(int nr);
         public delegate void redSwitchedEventHandler(bool isOn);

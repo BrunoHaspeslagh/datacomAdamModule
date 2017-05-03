@@ -37,11 +37,12 @@ namespace WPFAdam
         public bool fan { get; set; } = false;
         public bool AlarmOn { get; set; } = false;
         public InputListener inputs { get; set; }
+        public email mailListener { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 200);
+            dispatcherTimer.Interval = new TimeSpan(0,0,0,0,500);
             rotateVentilatorTimer.Tick += new EventHandler(rotateVentilatorTimer_Tick);
             rotateVentilatorTimer.Interval = new TimeSpan(0, 0, 0, 0, 25);
             Socket = new AdamSocket();
@@ -50,7 +51,37 @@ namespace WPFAdam
             inputs = new InputListener(modbus);
             inputs.btnPressed += Inputs_btnPressed;
             inputs.redSwitched += Inputs_redSwitched;
+            mailListener = new email();
+            mailListener.mailReceived += MailListener_mailReceived;
             this.Closing += MainWindow_Closing;
+        }
+
+        private void MailListener_mailReceived(string content)
+        {
+            Console.WriteLine(content);
+            if (content.Contains("licht uit")) {
+
+            }
+            if(content.Contains("licht aan"))
+            {
+
+            }
+            if(content.Contains("verwarming aan"))
+            {
+
+            }
+            if(content.Contains("verwarmoing uit"))
+            {
+
+            }
+            if(content.Contains("alarm aan"))
+            {
+
+            }
+            if(content.Contains("alarm uit"))
+            {
+
+            }
         }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
@@ -107,45 +138,45 @@ namespace WPFAdam
             if (statusled[4])
             {
                 EllLed4.Fill = new SolidColorBrush(colorLightOn);
-                modbus.ForceSingleCoil(3, true);
+                modbus.ForceSingleCoil(18, true);
             }
             else
             {
                 EllLed4.Fill = new SolidColorBrush(colorLightOff);
-                modbus.ForceSingleCoil(3, false);
+                modbus.ForceSingleCoil(18, false);
             }
 
             if (statusled[3])
             {
                 EllLed3.Fill = new SolidColorBrush(colorLightOn);
-                modbus.ForceSingleCoil(2, true);
+                modbus.ForceSingleCoil(19, true);
             }
             else
             {
                 EllLed3.Fill = new SolidColorBrush(colorLightOff);
-                modbus.ForceSingleCoil(2, false);
+                modbus.ForceSingleCoil(19, false);
             }
 
             if (statusled[2])
             {
                 EllLed2.Fill = new SolidColorBrush(colorLightOn);
-                modbus.ForceSingleCoil(1, true);
+                modbus.ForceSingleCoil(20, true);
             }
             else
             {
                 EllLed2.Fill = new SolidColorBrush(colorLightOff);
-                modbus.ForceSingleCoil(1, false);
+                modbus.ForceSingleCoil(20, false);
             }
 
             if (statusled[1])
             {
                 EllLed1.Fill = new SolidColorBrush(colorLightOn);
-                modbus.ForceSingleCoil(0, true);
+                modbus.ForceSingleCoil(21, true);
             }
             else
             {
                 EllLed1.Fill = new SolidColorBrush(colorLightOff);
-                modbus.ForceSingleCoil(0, false);
+                modbus.ForceSingleCoil(21, false);
             }
         }
 
@@ -159,7 +190,7 @@ namespace WPFAdam
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
         {
-            while (!modbus.ForceSingleCoil(17, false));
+            modbus.ForceSingleCoil(17, false);
             Socket.Disconnect();
         }
 
