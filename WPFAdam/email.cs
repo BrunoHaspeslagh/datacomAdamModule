@@ -17,6 +17,7 @@ namespace WPFAdam
         public string MailAddress = "testmatthijs@outlook.com";
         public string Password = "hT04dYfIubab50otDM6V";
         public string lastcontent = "";
+        public bool IsFirstRun = true;
         private BackgroundWorker wrkr = new BackgroundWorker();
         public event MailreceivedEventHandler mailReceived;
 
@@ -33,7 +34,7 @@ namespace WPFAdam
         {
             wrkr.RunWorkerAsync();
             string res = (string)e.Result;
-            if( res != null)
+            if( res != null && !IsFirstRun)
             {
                 mailReceived(res);
             }
@@ -79,6 +80,7 @@ namespace WPFAdam
                             if(email.Text != lastcontent)
                             {
                                 lastcontent = email.Text;
+                                IsFirstRun = false;
                                 return email.Text;
                             }
                             i = 0;

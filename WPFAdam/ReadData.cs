@@ -154,7 +154,15 @@ namespace EidSamples
             String value = "";
             if (m == null)
             {
-                m = Module.GetInstance(mFileName);
+                try
+                {
+                    m = Module.GetInstance(mFileName);
+                }
+                catch
+                {
+
+                }
+                
             }
             // pkcs11 module init
             //m.Initialize();

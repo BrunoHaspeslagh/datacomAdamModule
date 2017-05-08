@@ -10,5 +10,10 @@ namespace WPFAdam.models
     {
         public DateTime Start { get; set; }
         public DateTime Stop { get; set; }
+
+        public override string ToString()
+        {
+            return this.Start.ToShortTimeString() + " -- " + this.Stop.ToShortTimeString();
+        }
     }
 }

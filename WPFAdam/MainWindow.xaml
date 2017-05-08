@@ -7,25 +7,46 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="747.5" Width="993" ResizeMode="NoResize">
     <Grid Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="357*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <Image x:Name="image" Margin="10,10,0,0" Source="grondplan.jpg" Grid.Column="1"/>
-        <StackPanel Margin="5">
-            <Button x:Name="btnVentilator" Content="Ventilator" Margin="0,0,0,5" FontSize="20" Click="btnVentilator_Click"/>
-            <Button x:Name="BtnLed1" Content="Led1" Margin="0,0,0,5" FontSize="20" Click="BtnLed1_Click"/>
-            <Button x:Name="btnLed2" Content="Led2" Margin="0,0,0,5" FontSize="20" Click="btnLed2_Click"/>
-            <Button x:Name="btnLed3" Content="Led3" Margin="0,0,0,5" FontSize="20" Click="btnLed3_Click"/>
-            <Button x:Name="btnLed4" Content="Led4" Margin="0,0,0,5" FontSize="20" Click="btnLed4_Click"/>
-            <Button x:Name="BtnAlarmTest" Content="AlarmTest" Margin="0,0,0,5" FontSize="20" Click="BtnAlarmTest_Click"/>
+        <Image x:Name="image" Margin="9.6,10,0.4,-0.4" Source="grondplan.jpg" Grid.Column="1" Grid.RowSpan="2"/>
+        <StackPanel Margin="5,5,5.4,4.6" Grid.RowSpan="2">
+            <Button x:Name="btnVentilator" Content="Verwarming" Margin="0,0,0,5" FontSize="20" Click="btnVentilator_Click"/>
+            <Button x:Name="BtnLed1" Content="Licht kamer 1" Margin="0,0,0,5" FontSize="20" Click="BtnLed1_Click"/>
+            <Button x:Name="btnLed2" Content="Licht kamer 2" Margin="0,0,0,5" FontSize="20" Click="btnLed2_Click"/>
+            <Button x:Name="btnLed3" Content="Licht kamer 3" Margin="0,0,0,5" FontSize="20" Click="btnLed3_Click"/>
+            <Button x:Name="btnLed4" Content="Licht Kamer 4" Margin="0,0,0,5" FontSize="20" Click="btnLed4_Click"/>
+            <Button x:Name="BtnAlarmTest" Content="Probeer binnen te gaan" Margin="0,0,0,5" FontSize="20" Click="BtnAlarmTest_Click"/>
+            <ListBox x:Name="lstUsers" Height="200" Margin="0,0,0,5" SelectionChanged="lstUsers_SelectionChanged" />
+            <ListBox x:Name="lstTimeslots" Height="200" Margin="0,0,0,5" Visibility="Collapsed" />
+            <StackPanel x:Name="stTimeslotEdit" Visibility="Collapsed">
+                <TextBlock x:Name="txtSelectedUser" FontSize="16" Margin="0,0,0,10" TextAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" FontSize="16" Width="100" Click="btnBack_Click"/>
+                    <Button x:Name="btnDeleteTimeslot" Content="Delete" FontSize="16" Margin="20,0,0,0" Width="50" Click="btnDeleteTimeslot_Click"/>
+                    <Button x:Name="btnAddTimeslot" Content="Add" FontSize="16" Margin="20,0,0,0" Width="50" Click="btnAddTimeslot_Click"/>
+                </StackPanel>
+
+            </StackPanel>
+            <StackPanel x:Name="stUsersEdit" Orientation="Horizontal">
+                <Button x:Name="btnEditUser" Width="100" HorizontalAlignment="Left" Margin="0,0,20,0" FontSize="16" Click="btnEditUser_Click">Edit</Button>
+                <Button x:Name="btnDeleteUser" Width="100" FontSize="16" HorizontalAlignment="Right" Margin="15,0,0,0" Click="btnDeleteUser_Click">Delete</Button>
+            </StackPanel>
+            <TextBlock x:Name="txtAlarmOn" Text="Alarm: off" Background="Green" FontSize="16" TextAlignment="Center" Margin="0,20,0,0" MouseDown="txtAlarmOn_Click"></TextBlock>
         </StackPanel>
-        <Ellipse Name="EllLed1" Fill="#FF060606" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="118,476,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed1_MouseUp"/>
-        <Ellipse x:Name="EllLed2" Fill="Black" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="336,608,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed2_MouseUp"/>
-        <Ellipse x:Name="EllLed3" Fill="Black" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="530,390,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed3_MouseUp"/>
-        <Ellipse x:Name="EllLed4" Fill="Black" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="80,132,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed4_MouseUp"/>
-        <Image x:Name="imgVentilator" Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="224,132,0,0" VerticalAlignment="Top" Width="100" Source="fan.png" RenderTransformOrigin="0.5,0.5" MouseUp="btnVentilator_Click">
+        <Button x:Name="btnLogOut" Content="Logout" VerticalAlignment="Bottom" FontSize="16" Click="btnLogout_Click"></Button>
+        
+        <Ellipse Name="EllLed1" Fill="#FF060606" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="80.6,119,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed1_MouseUp"/>
+        <Ellipse x:Name="EllLed2" Fill="Black" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="529.6,524,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed2_MouseUp"/>
+        <Ellipse x:Name="EllLed3" Fill="Black" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="529.6,119,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed3_MouseUp"/>
+        <Ellipse x:Name="EllLed4" Fill="Black" Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="117.6,479,0,0" Stroke="Black" VerticalAlignment="Top" Width="50" MouseUp="EllLed4_MouseUp"/>
+        <Image x:Name="imgVentilator" Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="266.6,119,0,0" VerticalAlignment="Top" Width="100" Source="fan.png" RenderTransformOrigin="0.5,0.5" MouseUp="btnVentilator_Click">
             <Image.RenderTransform>
                 <TransformGroup x:Name="RotateTransform">
                     <RotateTransform Angle="0"/>

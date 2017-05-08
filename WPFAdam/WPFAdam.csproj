@@ -75,10 +75,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddAdmin.xaml.cs">
+      <DependentUpon>AddAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddTijdslotDialog.xaml.cs">
+      <DependentUpon>AddTijdslotDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="models\Tijdslot.cs" />
     <Compile Include="models\User.cs" />
     <Compile Include="ReadData.cs" />
     <Compile Include="Sign.cs" />
+    <Page Include="AddAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddTijdslotDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

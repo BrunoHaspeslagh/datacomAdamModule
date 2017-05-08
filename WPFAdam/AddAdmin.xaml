@@ -1,0 +1,28 @@
+﻿<Window x:Class="WPFAdam.AddAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFAdam"
+        mc:Ignorable="d"
+        Title="Please insert admin" Height="300" Width="300">
+    <Grid>
+        <StackPanel Margin="0,20,0,0">
+            <StackPanel Orientation="Horizontal">
+                
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Naam: "/>
+                <TextBlock x:Name="txtNaam" Text="..." FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Voornaam: "/>
+                <TextBlock x:Name="txtVNaam" Text="..." FontSize="16"/>
+
+            </StackPanel>
+
+            <Button x:Name="btnSelectAdmin" Content="Select" Width="100px" Margin="0,50,0,0" Click="btnSelectAdmin_Click" IsEnabled="False"/>
+        </StackPanel>
+    </Grid>
+</Window>

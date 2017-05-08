@@ -57,3 +57,9 @@ C:\Users\matth\Desktop\datacomAdamModule-master\WPFAdam\obj\Debug\WPFAdam.g.reso
 C:\Users\matth\Desktop\datacomAdamModule-master\WPFAdam\obj\Debug\WPFAdam.Properties.Resources.resources
 C:\Users\matth\Desktop\datacomAdamModule-master\WPFAdam\obj\Debug\WPFAdam.csproj.GenerateResource.Cache
 C:\Users\tost\Desktop\projecten\adam_module\git\datacomAdamModule\WPFAdam\bin\Debug\Net.Pkcs11.dll
+C:\Users\tost\Desktop\projecten\adam_module\git\datacomAdamModule\WPFAdam\bin\Debug\Newtonsoft.Json.dll
+C:\Users\tost\Desktop\projecten\adam_module\git\datacomAdamModule\WPFAdam\bin\Debug\Newtonsoft.Json.xml
+C:\Users\tost\Desktop\projecten\adam_module\git\datacomAdamModule\WPFAdam\obj\Debug\AddAdmin.g.cs
+C:\Users\tost\Desktop\projecten\adam_module\git\datacomAdamModule\WPFAdam\obj\Debug\AddTijdslotDialog.g.cs
+C:\Users\tost\Desktop\projecten\adam_module\git\datacomAdamModule\WPFAdam\obj\Debug\AddAdmin.baml
+C:\Users\tost\Desktop\projecten\adam_module\git\datacomAdamModule\WPFAdam\obj\Debug\AddTijdslotDialog.baml

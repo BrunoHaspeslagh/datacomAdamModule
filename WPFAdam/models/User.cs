@@ -15,7 +15,8 @@ namespace WPFAdam.models
         public string Naam { get; set; }
         public string RijksRegister { get; set; }
         public List<Tijdslot> TijdSloten { get; set; }
-       
+        public bool IsAdmin { get; set; }
+
 
         public User(string vnaam, string naam, string rr)
         {
@@ -51,6 +52,34 @@ namespace WPFAdam.models
             {
                 await wrtr.WriteLineAsync(JsonConvert.SerializeObject(users));
             }
+        }
+
+        public bool MagBinnen()
+        {
+            bool mag = false;
+            foreach(Tijdslot t in this.TijdSloten)
+            {
+                int startuur = t.Start.Hour;
+                int startMinuut = t.Start.Minute;
+                int stopUur = t.Stop.Hour;
+                int stopMinuut = t.Stop.Minute;
+                int nuUur = DateTime.Now.Hour;
+                int nuMinuut = DateTime.Now.Minute;
+
+                if(nuUur > startuur && nuUur < stopUur)
+                {
+                    mag = true;
+                }
+                if(nuUur == startuur && nuMinuut > startMinuut)
+                {
+                    mag = true;
+                }
+                if(nuUur == stopUur && nuMinuut < stopMinuut)
+                {
+                    mag = true;
+                }
+            }
+            return mag;
         }
     }
 }
