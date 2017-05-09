@@ -156,7 +156,7 @@ namespace WPFAdam
                     StartStopVentilator();
                 }
             }
-            if(content.Contains("verwarmoing uit"))
+            if(content.Contains("verwarming uit"))
             {
                 if (rotateVentilatorTimer.IsEnabled)
                 {
